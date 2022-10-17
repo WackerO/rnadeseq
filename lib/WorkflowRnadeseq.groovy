@@ -9,7 +9,6 @@ class WorkflowRnadeseq {
     //
     public static void initialise(params, log) {
         genomeExistsError(params, log)
-
     }
 
     //
@@ -37,9 +36,7 @@ class WorkflowRnadeseq {
         yaml_file_text        += "data: |\n"
         yaml_file_text        += "${summary_section}"
         return yaml_file_text
-    }
-
-    //
+    }//
     // Exit pipeline if incorrect --genome key provided
     //
     private static void genomeExistsError(params, log) {
