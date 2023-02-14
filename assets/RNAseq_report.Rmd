@@ -45,6 +45,7 @@ params:
     path_proj_summary: ''
     path_software_versions: ''
     revision: ''
+    commandline: ''
 
     #Additional arg to indicate that a github test is run
     citest: ''
@@ -966,7 +967,7 @@ ggsave(plot = pca, filename = "differential_gene_expression/plots/PCA_plot.png",
 
 # Save static plot with samplename labels
 pca_with_labels <- pca +
-    geom_label_repel(aes(label=name), force=2, force_pull=0, size=2.8, box.padding=0.15,show.legend  = F)
+    geom_label_repel(aes(label=name), force=2, force_pull=0, size=2.8, box.padding=0.15,show.legend = F)
 ggsave(plot = pca_with_labels, filename = "differential_gene_expression/plots/PCA_plot_with_labels.pdf", device = "pdf", dpi = 300)
 ggsave(plot = pca_with_labels, filename = "differential_gene_expression/plots/PCA_plot_with_labels.svg", device = "svg", dpi = 150)
 ggsave(plot = pca_with_labels, filename = "differential_gene_expression/plots/PCA_plot_with_labels.png", device = "png", dpi = 150)
@@ -2028,7 +2029,9 @@ cat(paste0("\nAn aggregation of the quality control for the RNAseq analysis was 
 
 ## Differential gene expression analysis
 
-The differential expression analysis was performed by the use of the `rnadeseq `r as.character(params$revision)`` pipeline [^5], which was written using the nf-core template [@ewels2020nf]. For differential expression analysis, the read quantification data resulting from `r quant_tool` were processed with the R package `DESeq2 v`r packageVersion("DESeq2")`` [@love2014differential].
+The differential expression analysis was performed by the use of the `rnadeseq `r as.character(params$revision)`` pipeline [^5], which was written using the nf-core template [@ewels2020nf]. The pipeline was run with the following command:  
+``r params$commandline``  
+For differential expression analysis, the read quantification data resulting from `r quant_tool` were processed with the R package `DESeq2 v`r packageVersion("DESeq2")`` [@love2014differential].
 
 ```{r conditional_pathway2, echo=FALSE, results='asis', eval=params$pathway_analysis}
 version_gprofiler2 = packageVersion("gprofiler2")

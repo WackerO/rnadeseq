@@ -36,6 +36,7 @@ option_list = list(
     make_option(c("-s", "--proj_summary"), type="character", default=NULL, help="Project summary file", metavar="character"),
     make_option(c("-v", "--software_versions"), type="character", default=NULL, help="Versions file", metavar="character"),
     make_option(c("-j", "--revision"), type="character", default=NULL, help="Rnadeseq workflow revision", metavar="character"),
+    make_option("--commandline", type="character", default=NULL, help="Nextflow command used to run the pipeline", metavar="character"),
 
     make_option("--citest", action="store_true", default=FALSE, help="Run github test and don't save pathway heatmaps.")
 )
@@ -81,5 +82,6 @@ rmarkdown::render(opt$report, output_file = opt$output, knit_root_dir = wd, outp
                                 path_proj_summary = opt$proj_summary,
                                 path_software_versions = opt$software_versions,
                                 revision = opt$revision,
+                                commandline = opt$commandline,
 
                                 citest = opt$citest))

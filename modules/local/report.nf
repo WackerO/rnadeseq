@@ -73,6 +73,7 @@ process REPORT {
         --proj_summary $proj_summary \
         --software_versions $software_versions \
         --revision $workflow.manifest.version \
+        --commandline "$workflow.commandLine" \
         $citest_opt
 
     # Remove allgenes dir as the contained files do not contain only DE genes
